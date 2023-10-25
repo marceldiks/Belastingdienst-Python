@@ -33,7 +33,7 @@ print('Total', dice1 + dice2 + dice3 + dice4 + dice5)
 # dices = []
 # for _ in range(5):
 #     dices.append(random.randint(1, 6))
-#
+
 # print('Thrown', dices)
 # print('Total', sum(dices))
 

@@ -1,4 +1,13 @@
+import logging
 
+logging.basicConfig(filename = None,   # 'example.log',
+                    format = '%(levelname)s %(asctime)s %(message)s',
+                    level = logging.WARNING)
+
+class OutOfBoundsException(Exception):
+    pass
+    
+    
 def foolproof_input(prompt, lower, upper):
 
     while True:
@@ -9,14 +18,18 @@ def foolproof_input(prompt, lower, upper):
             if lower <= number <= upper:
                 return number
             else:
-                print(f'{number} is not between {lower} and {upper}.')
+                raise OutOfBoundsException(f'{number} is not between {lower} and {upper}.')
 
         except ValueError:
-            print(f'"{response}" is not a number.')
+            logging.info(f'"{response}" is not a number.')
+
+        except OutOfBoundsException as ex:
+            logging.info(ex)
 
         except KeyboardInterrupt:
             print('\nOK. Stoping now.')
             break
+        
 
 
 # ----------------------------------------------------------------

@@ -1,23 +1,14 @@
-s = r"""\
-Dé plek voor Smart Industry
-Brainport Industries Campus is een unieke locatie in de Brainport regio, waar meer dan 50 bedrijven in de hightech maakindustrie en 3 onderwijsinstellingen zijn gevestigd. Smart Industry komt hier letterlijk en figuurlijk van de grond, in een geheel circulair gebouw dat modulair is opgezet.
+import string
 
-Een hightech krachtenbundeling
-Het is dé plek waar de hightech maakindustrie elkaar ontmoet, waar bedrijven leren van elkaar en direct samenwerken met de nieuwe generatie technisch opgeleiden. Op deze manier wordt er optimaal gebruik gemaakt van kennis en kunde om tot innovatieve oplossingen en vernieuwing te komen.
-Behalve kennis en ervaring worden hier ook faciliteiten gedeeld om te produceren en te innoveren. Samen geven we vorm aan het innovatieprogramma Fabriek van de Toekomst voor de high tech maakindustrie.
-"""
+s = r"""\
+Hebt u in juli 2023 een brief gekregen waarin wij lieten weten dat wij uw betalingsregeling voor het bijzonder uitstel vanwege de coronacrisis gingen intrekken? En hebt u - ondanks een eventuele actie - nog steeds een betalingsachterstand? Dan kunt u vanaf eind september 2023 aanmaningen verwachten voor alle belastingaanslagen waarvoor u bijzonder uitstel van betaling hebt gekregen.
+Bent u ondernemer en lukt het u niet uw belastingschuld en andere schulden te betalen? Dan kunt u misschien een saneringsakkoord sluiten. Dat wil zeggen dat u met al uw schuldeisers afspreekt dat u maar een deel van uw schulden betaalt. Vanwege de coronacrisis gingen wij soepeler om met 1 van onze voorwaarden om mee te werken aan een saneringsakkoord. Dat blijven wij doen tot 1 april 2024.
+Hebt u in april 2023 een brief gekregen waarin stond dat u niet voldeed aan de voorwaarden voor de betalingsregeling voor het bijzonder uitstel vanwege de coronacrisis? En hebt u daarna niets gedaan? Dan sturen wij u in juli 2023 een brief waarin wij u laten weten dat wij uw betalingsregeling intrekken."""
 
 # clean up
-
-# s = s.lower().replace('.', '').replace(',', '').replace('(', '').replace(')', '')
-#
-# or
-# s = s.lower().translate(str.maketrans('', '', '.,(){}[]/\|#&'))
-#
-# or
-
-import string
-s = s.lower().translate(str.maketrans('é', 'e', string.punctuation))
+s = s.lower().translate(str.maketrans('áäâàéëêèíïìîóöôòúüûù', 
+                                      'aaaaeeeeiiiioooouuuu', 
+                                      string.punctuation))
 
 words = s.split()
 
@@ -27,10 +18,9 @@ d = dict()
 for word in unique_words:
     d[word] = words.count(word)
 
-for word, n in sorted(d.items(), key = lambda item: item[1]):
+for word, n in sorted(d.items()):
     print(f'{word:25}: {n:3} {"*" * n}')
-
-
+    
 
 
 
@@ -53,8 +43,8 @@ for word, n in sorted(d.items(), key = lambda item: item[1]):
 
 
 
-# # or with a dict comprehension
-# d = {word: words.count(word) for word in set(words)}
+# or with a dict comprehension
+d = {word: words.count(word) for word in set(words)}
 
 # for word, n in sorted(d.items()):
 #     print(f'{word:20}: {n:3} {"*" * n}')

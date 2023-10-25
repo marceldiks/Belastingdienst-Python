@@ -32,7 +32,7 @@ match age:
     case age if age < 4:
         print('A toddler')
 
-    case age if age >= 3 and age < 13:
+    case age if age >= 4 and age < 13:
         print('A kid')
 
     case age if 13 <= age < 20:

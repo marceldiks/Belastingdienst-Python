@@ -1,5 +1,5 @@
 
-def banner(text):
+def print_banner(text):
     n = len(text)
     print('***' + '*' * n + '***')
     print('*  ' + text    + '  *')
@@ -7,7 +7,7 @@ def banner(text):
 
 
 
-def banner(text, c = '*'):
+def print_banner(text, c = '*'):
     """Print the text as a banner"""
     n = len(text)
     print(c * (n + 6))
@@ -47,6 +47,7 @@ def create_banner(text, c = '*', max_length = None):
 
 def print_banner(text, **kwargs):
     """Print the created banner"""
+    print(kwargs)
     print(create_banner(text, **kwargs))
 
 
@@ -54,6 +55,6 @@ def print_banner(text, **kwargs):
 
 if __name__ == '__main__':
 
-    name = input('What is your name? : ')
+    text = input('What is your name? : ')
 
-    print(box(name))
+    print_banner(text, c = '+')

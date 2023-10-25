@@ -1,21 +1,27 @@
-filename_in = '../Sandbox/ca-500.csvX'
-filename_out = '../Sandbox/ca-out.txt'
+import sys
+
+filename_in = 'Sandbox/ca-500.csv'
 
 try:
-    with open(filename_in) as f_in:
-        with open(filename_out, mode = 'w') as f_out:
-            headers = f_in.readline().strip().split(';')
+    with open(filename_in) as f:
+        headers = f.readline().strip().split(';')
 
-            for line in f_in:
-                line = line.strip()
-                values = line.split(';')
+        for line in f:
+            fields = line.strip().split(';')
 
-                d = dict(zip(headers, values))
+            d = dict(zip(headers, fields))
 
-                if d['city'] == 'Montreal':
-                    print(f"{d['first_name']:16} {d['last_name']:16} {d['city']:16} {d['email']}")
+            if d['city'] == 'Montreal':
+                print('{:16} {:16} {:16} {}'.format(d['first_name'], 
+                                                    d['last_name'], 
+                                                    d['city'], 
+                                                    d['email']))
 
-                    print(f"{d['first_name']:16} {d['last_name']:16} {d['city']:16} {d['email']}", file = f_out)
+                # print(f"{d['first_name']:16} {d['last_name']:16} {d['city']:16} {d['email']}")
 
-except FileNotFoundError:
-    print(f'Cannot find the file: {filename_in}')
+except FileNotFoundError as ex:
+    print(f'Bestand {filename_in} bestaat niet.')
+    sys.exit(-1)
+
+except KeyError as ex:
+    print(f'Veld bestaat niet. {ex}')    

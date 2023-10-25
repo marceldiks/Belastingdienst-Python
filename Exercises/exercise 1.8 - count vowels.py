@@ -35,7 +35,7 @@ print("Total number of vowels: %d" % number_of_vowels)
 number_of_vowels = 0
 
 for vowel in 'aeiouy':
-   n = s.count(vowel)
+   n = s.lower().count(vowel)
    number_of_vowels += n
 
    print(f'The vowel {vowel} occurs {n} times.')
