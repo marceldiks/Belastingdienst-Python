@@ -15,6 +15,9 @@ class Car:
     def __repr__(self):
         return f"Car('{self._make}', '{self._model}', '{self._color}', mileage={self._mileage})"
 
+    def __int__(self):
+        return self._mileage
+
     def drive(self, km):
         self._mileage += km
         print(f'Driving {km}km.')
@@ -31,5 +34,5 @@ if __name__ == '__main__':
 
     my_car.info()
 
-    print(my_car)
+    print(str(my_car))
     print(repr(my_car))

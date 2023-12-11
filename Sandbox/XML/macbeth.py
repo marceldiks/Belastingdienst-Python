@@ -4,7 +4,6 @@ import sys
 import xml.etree.ElementTree as ET
 
 # Load an XML document and get the root element
-tree = ET.parse(r'Macbeth.xml')
 root = tree.getroot()
 
 # print(root)
