@@ -6,8 +6,8 @@ upper = 100
 magic_number = random.randint(lower, upper)
 
 print(f'Guess a number between {lower} and {upper}.')
-number_of_guesses = 0
 
+number_of_guesses = 0
 while True:
 
     first_or_next = 'first' if number_of_guesses == 0 else 'next'
